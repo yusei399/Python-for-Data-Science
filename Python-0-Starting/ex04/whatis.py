@@ -2,7 +2,10 @@ import sys
 
 args = sys.argv
 
-if len(args) != 2:
+if len(args) == 1:
+    exit()
+
+if len(args) > 2:
     raise AssertionError("more than one argument is provided")
 
 try:
