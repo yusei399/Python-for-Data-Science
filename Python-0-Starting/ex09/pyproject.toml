@@ -1,13 +1,19 @@
+[build-system]
+requires = ["setuptools", "wheel"]
+build-backend = "setuptools.build_meta"
+
 [project]
 name = "ft_package"
 version = "0.0.1"
 description = "A sample test package"
 authors = [
-  {name = ""},
-  {email = ""},
+  { name = "yuikeda", email = "yuikeda@student.42.fr" }
 ]
-license = {file = "LICENSE", name = "MIT"}
-classifiers = []
+license = { text = "MIT" }
+requires-python = ">=3.6"
 
 [project.urls]
-Homepage = ""
+Homepage = "https://github.com/yusei399/Python-for-Data-Science"
+
+[tool.setuptools]
+packages = ["ft_package"]
