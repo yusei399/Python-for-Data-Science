@@ -2,7 +2,7 @@ from PIL import Image
 import numpy as np
 
 
-def ft_load(path: str) -> np.ndarray:
+def load_image(path: str) -> np.ndarray:
     assert isinstance(path, str) and len(path) > 0, \
         "The path must be a string."
 
@@ -19,4 +19,4 @@ def ft_load(path: str) -> np.ndarray:
 
 if __name__ == "__main__":
     image_path = 'landscape.jpg'
-    ft_load(image_path)
+    load_image(image_path)

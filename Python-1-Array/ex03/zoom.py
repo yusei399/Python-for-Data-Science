@@ -1,5 +1,5 @@
 import matplotlib.pyplot as plt
-from load_image import ft_load
+from load_image import load_image
 
 
 def display_image_with_axes(img, cmap):
@@ -15,7 +15,7 @@ def zoom(img_array, x_start=100, x_end=500, y_start=450, y_end=850):
 
 def main():
     try:
-        original_img = ft_load("animal.jpeg")
+        original_img = load_image("animal.jpeg")
         print("The shape of image is:", original_img.shape)
         print(original_img)
 

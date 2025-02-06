@@ -1,6 +1,6 @@
 import numpy as np
 import matplotlib.pyplot as plt
-from load_image import ft_load
+from load_image import load_image
 
 
 def ft_invert(array: np.ndarray) -> np.ndarray:
@@ -37,7 +37,7 @@ def ft_grey(array: np.ndarray) -> np.ndarray:
 
 
 image_path = 'landscape.jpg'
-array = ft_load(image_path)
+array = load_image(image_path)
 
 inverted_array = ft_invert(array.copy())
 red_array = ft_red(array.copy())

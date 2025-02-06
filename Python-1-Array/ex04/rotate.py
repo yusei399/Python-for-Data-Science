@@ -1,6 +1,6 @@
 import matplotlib.pyplot as plt
 import numpy as np
-from load_image import ft_load
+from load_image import load_image
 
 
 def display_image_with_axes(img, cmap):
@@ -27,7 +27,7 @@ def transpose(img_array):
 
 def main():
     try:
-        original_img = ft_load("animal.jpeg")
+        original_img = load_image("animal.jpeg")
 
         zoomed_img = zoom(original_img)
         print("The shape of image is:",

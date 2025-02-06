@@ -2,7 +2,7 @@ import numpy as np
 from PIL import Image
 
 
-def ft_load(path: str) -> np.ndarray:
+def load_image(path: str) -> np.ndarray:
     """
     Load an image from a file, print its shape and return it as a numpy array.
 
