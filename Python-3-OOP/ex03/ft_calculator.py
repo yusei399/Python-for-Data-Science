@@ -20,7 +20,12 @@ class calculator:
 
     def __truediv__(self, object):
         """Divides each element of the vector by a scalar and prints the result."""
-        self.vector = [x / object for x in self.vector]
-        print(self.vector)
-
+        try:
+            if object == 0:
+                raise ZeroDivisionError("Division by zero is not allowed.")
+            self.vector = [x / object for x in self.vector]
+            print(self.vector)
+            return [x for x in self.vector]
+        except ZeroDivisionError as error:
+            print(ZeroDivisionError.__name__ + ":", error)
 
