@@ -1,0 +1,9 @@
+Metadata-Version: 2.2
+Name: ft_package
+Version: 0.0.1
+Summary: A sample test package
+Author-email: yuikeda <yuikeda@student.42.fr>
+License: MIT
+Project-URL: Homepage, https://github.com/yusei399/Python-for-Data-Science
+Requires-Python: >=3.6
+License-File: LICENSE
