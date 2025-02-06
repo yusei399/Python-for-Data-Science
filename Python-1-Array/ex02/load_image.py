@@ -1,21 +1,22 @@
 from PIL import Image
 import numpy as np
 
-def load_image(image_path: str):
-    try:
-        img = Image.open(image_path)
-        img_array = np.array(img)
-        
-        print(f"The shape of image is: {img_array.shape}")
-        
-        print(img_array[:1, :5, :])
 
-        return img
+def ft_load(path: str) -> np.ndarray:
+    assert isinstance(path, str) and len(path) > 0, \
+        "The path must be a string."
 
-    except Exception as e:
-        print(f"An error occurred: {e}")
-        return None
+    img = Image.open(path)
+
+    assert img is not None, "The image could not be loaded."
+    assert img.format in ["JPEG", "JPG"], \
+        "The image format is not supported."
+
+    img_array = np.array(img)
+
+    return img_array
+
 
 if __name__ == "__main__":
     image_path = 'landscape.jpg'
-    load_image(image_path)
+    ft_load(image_path)

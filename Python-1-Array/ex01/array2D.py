@@ -1,19 +1,14 @@
 def slice_me(family: list, start: int, end: int) -> list:
     if not all(isinstance(row, list) for row in family):
         raise ValueError("Input must be a 2D list.")
-    
     row_length = len(family[0])
     if not all(len(row) == row_length for row in family):
         raise ValueError("All rows in the 2D list must have the same length.")
-    
     shape = (len(family), row_length)
     print(f"My shape is : {shape}")
-    
     sliced_family = family[start:end]
-    
     new_shape = (len(sliced_family), row_length)
     print(f"My new shape is : {new_shape}")
-    
     return sliced_family
 
 

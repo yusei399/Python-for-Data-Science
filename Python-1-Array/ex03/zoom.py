@@ -1,8 +1,5 @@
-from PIL import Image
-import numpy as np
 import matplotlib.pyplot as plt
 from load_image import ft_load
-
 
 
 def display_image_with_axes(img, cmap):
