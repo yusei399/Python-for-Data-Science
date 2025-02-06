@@ -1,40 +1,52 @@
-from PIL import Image
-import numpy as np
 import matplotlib.pyplot as plt
-from load_image import load_image
+import numpy as np
+from load_image import ft_load
 
-def rotate_image(img, square_size=(400, 400)):
+
+def display_image_with_axes(img, cmap):
+    plt.imshow(img, cmap=cmap)
+    plt.show()
+
+
+def zoom(img_array, x_start=100, x_end=500, y_start=450, y_end=850):
+    zoomed_img = img_array[x_start:x_end, y_start:y_end, 0:1]
+
+    return zoomed_img
+
+
+def transpose(img_array):
+    rotated_img = []
+    for x in range(img_array.shape[1]):
+        row = []
+        for y in range(img_array.shape[0]):
+            row.append(img_array[y][x][0])
+        rotated_img.append(row)
+
+    return np.array(rotated_img)
+
+
+def main():
     try:
-        width, height = img.size
-        left = (width - square_size[0]) / 2
-        top = (height - square_size[1]) / 2
-        right = (width + square_size[0]) / 2
-        bottom = (height + square_size[1]) / 2
+        original_img = ft_load("animal.jpeg")
 
-        square_img = img.crop((left, top, right, bottom))
-        square_img_array = np.array(square_img.convert('L'))
+        zoomed_img = zoom(original_img)
+        print("The shape of image is:",
+              zoomed_img.shape, "or", zoomed_img.shape[:2])
+        print(zoomed_img)
+        transposed_img = transpose(zoomed_img)
+        print("New shape after Transpose:",
+              transposed_img.shape[:2])
+        print(transposed_img)
 
-        print(f"The shape of image is: {square_img_array.shape}")
+        display_image_with_axes(transposed_img, cmap="gray")
 
-        print(square_img_array[:1, :5])
-
-        transposed_img_array = np.transpose(square_img_array)
-
-        print(f"New shape after Transpose: {transposed_img_array.shape}")
-
-        print(transposed_img_array[:1, :5])
-
-        plt.imshow(transposed_img_array, cmap='gray')
-        plt.xlabel('X-axis')
-        plt.ylabel('Y-axis')
-        plt.title('Transposed Image')
-        plt.show()
-
+    except AssertionError as e:
+        print("AssertionError:", e)
     except Exception as e:
-        print(f"An error occurred: {e}")
+        print("Exception:", e)
+    except KeyboardInterrupt:
+        pass
+
 
 if __name__ == "__main__":
-    image_path = 'animal.jpeg'
-    img = load_image(image_path)
-    if img:
-        rotate_image(img)
+    main()

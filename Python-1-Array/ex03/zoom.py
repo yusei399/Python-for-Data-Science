@@ -1,34 +1,41 @@
 from PIL import Image
 import numpy as np
 import matplotlib.pyplot as plt
-from load_image import load_image
+from load_image import ft_load
 
-def zoom_image(img, zoom_size=(400, 400)):
+
+
+def display_image_with_axes(img, cmap):
+    plt.imshow(img, cmap=cmap)
+    plt.show()
+
+
+def zoom(img_array, x_start=100, x_end=500, y_start=450, y_end=850):
+    zoomed_img = img_array[x_start:x_end, y_start:y_end, 0:1]
+
+    return zoomed_img
+
+
+def main():
     try:
-        width, height = img.size
-        left = (width - zoom_size[0]) / 2
-        top = (height - zoom_size[1]) / 2
-        right = (width + zoom_size[0]) / 2
-        bottom = (height + zoom_size[1]) / 2
+        original_img = ft_load("animal.jpeg")
+        print("The shape of image is:", original_img.shape)
+        print(original_img)
 
-        zoomed_img = img.crop((left, top, right, bottom))
-        zoomed_img_array = np.array(zoomed_img.convert('L'))
+        zoomed_img = zoom(original_img)
+        print("New shape after slicing:",
+              zoomed_img.shape, "or", zoomed_img.shape[:2])
+        print(zoomed_img)
 
-        print(f"New shape after slicing: {zoomed_img_array.shape}")
+        display_image_with_axes(zoomed_img, cmap="gray")
 
-        print(zoomed_img_array[:1, :5])
-
-        plt.imshow(zoomed_img_array, cmap='gray')
-        plt.xlabel('X-axis')
-        plt.ylabel('Y-axis')
-        plt.title('Zoomed Image')
-        plt.show()
-
+    except AssertionError as e:
+        print("AssertionError:", e)
     except Exception as e:
-        print(f"An error occurred: {e}")
+        print("Exception:", e)
+    except KeyboardInterrupt:
+        pass
+
 
 if __name__ == "__main__":
-    image_path = 'animal.jpeg'
-    img = load_image(image_path)
-    if img:
-        zoom_image(img)
+    main()

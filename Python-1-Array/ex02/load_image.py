@@ -17,5 +17,5 @@ def load_image(image_path: str):
         return None
 
 if __name__ == "__main__":
-    image_path = 'animal.jpeg'
+    image_path = 'landscape.jpg'
     load_image(image_path)

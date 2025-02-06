@@ -1,22 +1,32 @@
-from PIL import Image
 import numpy as np
+from PIL import Image
 
-def ft_load(image_path: str) -> np.ndarray:
-    try:
-        img = Image.open(image_path)
-        img_array = np.array(img)
-        
-        print(f"The shape of image is: {img_array.shape}")
-        
-        print(img_array[:1, :5, :])
 
-        return img_array
+def ft_load(path: str) -> np.ndarray:
+    """
+    Load an image from a file, print its shape and return it as a numpy array.
 
-    except Exception as e:
-        print(f"An error occurred: {e}")
-        return None
+    Parameters:
+        path (str): The path to the image file.
 
-# Path to the image
-if __name__ == "__main__":
-    image_path = 'landscape.jpg'
-    ft_load(image_path)
+    Returns:
+        np.ndarray: The image as a numpy array.
+
+    Raises:
+        AssertionError: If the path is not a string or is empty.
+        AssertionError: If the image could not be loaded.
+        AssertionError: If the image format is not supported.
+    """
+
+    assert isinstance(path, str) and len(path) > 0, \
+        "The path must be a string."
+
+    img = Image.open(path)
+
+    assert img is not None, "The image could not be loaded."
+    assert img.format in ["JPEG", "JPG"], \
+        "The image format is not supported."
+
+    img_array = np.array(img)
+
+    return img_array
