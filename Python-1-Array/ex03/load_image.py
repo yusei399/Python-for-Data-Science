@@ -1,6 +1,7 @@
 import numpy as np
 from PIL import Image
 
+
 def load_image(path: str) -> np.ndarray:
     """
     指定されたパスから画像を読み込み、NumPy配列として返す。
@@ -32,3 +33,11 @@ def load_image(path: str) -> np.ndarray:
     img_array = np.array(img)
 
     return img_array
+
+
+if __name__ == "__main__":
+    try:
+        image_path = 'landscape.jpg'
+        print(load_image(image_path))
+    except ValueError as e:
+        print(e)
