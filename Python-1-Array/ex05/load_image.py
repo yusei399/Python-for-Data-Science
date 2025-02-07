@@ -2,7 +2,7 @@ import numpy as np
 from PIL import Image
 
 
-def load_image(path: str) -> np.ndarray:
+def ft_load(path: str) -> np.ndarray:
     """
     指定されたパスから画像を読み込み、NumPy配列として返す。
 
@@ -18,7 +18,7 @@ def load_image(path: str) -> np.ndarray:
         AssertionError: 画像のフォーマットがJPEGまたはJPGでない場合。
 
     Example:
-        >>> img_array = load_image("example.jpg")
+        >>> img_array = ft_load("example.jpg")
         >>> print(img_array.shape)  # (高さ, 幅, チャネル数)
     """
     assert isinstance(path, str) and len(path) > 0, \
@@ -38,6 +38,6 @@ def load_image(path: str) -> np.ndarray:
 if __name__ == "__main__":
     try:
         image_path = 'landscape.jpg'
-        print(load_image(image_path))
+        print(ft_load(image_path))
     except ValueError as e:
         print(e)

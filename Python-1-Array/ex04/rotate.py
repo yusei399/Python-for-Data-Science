@@ -4,7 +4,7 @@
 # matplotlib.use("TkAgg")                # noqa: E402
 import matplotlib.pyplot as plt        # noqa: E402
 import numpy as np                     # noqa: E402
-from load_image import load_image      # noqa: E402
+from load_image import ft_load        # noqa: E402
 
 
 def show_image(img, cmap="gray"):

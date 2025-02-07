@@ -3,7 +3,7 @@
 import matplotlib                      # noqa: E402
 matplotlib.use("TkAgg")                # noqa: E402
 import matplotlib.pyplot as plt        # noqa: E402
-from load_image import load_image      # noqa: E402
+from load_image import ft_load         # noqa: E402
 
 
 def show_image(img, cmap="gray"):
@@ -44,14 +44,14 @@ def main():
     画像を読み込み、サイズを表示し、切り抜いた後に表示する。
 
     Raises:
-        AssertionError: `load_image` で発生する可能性のあるアサーションエラー。
+        AssertionError: `ft_load` で発生する可能性のあるアサーションエラー。
         Exception: その他の予期しない例外。
 
     Returns:
         None
     """
     try:
-        original_img = load_image("animal.jpeg")
+        original_img = ft_load("animal.jpeg")
         print("The shape of image is:", original_img.shape)
         print(original_img)
 
