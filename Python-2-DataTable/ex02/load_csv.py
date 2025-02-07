@@ -1,5 +1,6 @@
 import pandas as pd
 
+
 def load(path: str):
     """
     指定されたパスからCSVファイルを読み込み、Pandas DataFrameとして返す。
