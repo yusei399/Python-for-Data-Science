@@ -5,7 +5,6 @@ matplotlib.use("TkAgg")                # noqa: E402
 import matplotlib.pyplot as plt        # noqa: E402
 from load_image import ft_load         # noqa: E402
 
-
 def show_image(img, cmap="gray"):
     """
     画像を表示する。

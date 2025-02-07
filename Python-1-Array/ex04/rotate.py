@@ -69,7 +69,7 @@ def main():
         None
     """
     try:
-        original_img = load_image("animal.jpeg")
+        original_img = ft_load("animal.jpeg")
         cropped_img = crop_image(original_img)
         print("切り抜かれた画像の形状:", cropped_img.shape, "または", cropped_img.shape[:2])
         print(cropped_img)

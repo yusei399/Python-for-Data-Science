@@ -81,7 +81,7 @@ def ft_grey(array: np.ndarray) -> np.ndarray:
 if __name__ == "__main__":
     try:
         image_path = 'landscape.jpg'
-        array = load_image(image_path)
+        array = ft_load(image_path)
 
         # 各フィルタを適用
         inverted_array = ft_invert(array.copy())

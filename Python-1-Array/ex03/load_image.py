@@ -2,7 +2,7 @@ import numpy as np
 from PIL import Image
 
 
-def load_image(path: str) -> np.ndarray:
+def ft_load(path: str) -> np.ndarray:
     """
     指定されたパスから画像を読み込み、NumPy配列として返す。
 
