@@ -1,4 +1,6 @@
 import numpy as np
+import matplotlib
+matplotlib.use("TkAgg")
 import matplotlib.pyplot as plt
 from load_image import load_image
 
@@ -36,24 +38,29 @@ def ft_grey(array: np.ndarray) -> np.ndarray:
     return grey_img
 
 
-image_path = 'landscape.jpg'
-array = load_image(image_path)
 
-inverted_array = ft_invert(array.copy())
-red_array = ft_red(array.copy())
-green_array = ft_green(array.copy())
-blue_array = ft_blue(array.copy())
-grey_array = ft_grey(array.copy())
+if __name__ == "__main__":
+    try:
+        image_path = 'landscape.jpg'
+        array = load_image(image_path)
 
-filters = ['Inverted', 'Red', 'Green', 'Blue', 'Grey']
-images = [inverted_array, red_array, green_array, blue_array, grey_array]
+        inverted_array = ft_invert(array.copy())
+        red_array = ft_red(array.copy())
+        green_array = ft_green(array.copy())
+        blue_array = ft_blue(array.copy())
+        grey_array = ft_grey(array.copy())
 
-for i, (img, title) in enumerate(zip(images, filters)):
-    plt.subplot(1, 5, i + 1)
-    plt.imshow(img)
-    plt.title(title)
-    plt.axis('off')
+        filters = ['Inverted', 'Red', 'Green', 'Blue', 'Grey']
+        images = [inverted_array, red_array, green_array, blue_array, grey_array]
 
-plt.show()
+        for i, (img, title) in enumerate(zip(images, filters)):
+            plt.subplot(1, 5, i + 1)
+            plt.imshow(img)
+            plt.title(title)
+            plt.axis('off')
 
-print(ft_invert.__doc__)
+        plt.show()
+
+        print(ft_invert.__doc__)
+    except ValueError as e:
+        print(e)

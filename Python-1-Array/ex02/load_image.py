@@ -18,5 +18,8 @@ def load_image(path: str) -> np.ndarray:
 
 
 if __name__ == "__main__":
-    image_path = 'landscape.jpg'
-    load_image(image_path)
+    try:
+        image_path = 'landscape.jpg'
+        load_image(image_path)
+    except ValueError as e:
+        print(e)
