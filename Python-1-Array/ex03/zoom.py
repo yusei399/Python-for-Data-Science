@@ -1,7 +1,10 @@
-import matplotlib
-matplotlib.use("TkAgg")
-import matplotlib.pyplot as plt
-from load_image import load_image
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+import matplotlib                      # noqa: E402
+matplotlib.use("TkAgg")                # noqa: E402
+import matplotlib.pyplot as plt        # noqa: E402
+from load_image import load_image      # noqa: E402
+
 
 def show_image(img, cmap="gray"):
     """
@@ -16,6 +19,7 @@ def show_image(img, cmap="gray"):
     """
     plt.imshow(img, cmap=cmap)
     plt.show()
+
 
 def crop_image(img_array, x_start=100, x_end=500, y_start=450, y_end=850):
     """
@@ -33,6 +37,7 @@ def crop_image(img_array, x_start=100, x_end=500, y_start=450, y_end=850):
     """
     zoom_image = img_array[x_start:x_end, y_start:y_end, 0:1]
     return zoom_image
+
 
 def main():
     """
@@ -63,6 +68,7 @@ def main():
         print("Exception:", e)
     except KeyboardInterrupt:
         pass
+
 
 if __name__ == "__main__":
     main()
