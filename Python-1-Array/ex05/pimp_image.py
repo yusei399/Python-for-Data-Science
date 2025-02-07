@@ -1,8 +1,8 @@
 import numpy as np
-# import matplotlib
-# matplotlib.use("TkAgg")  # GUIバックエンドを指定
-import matplotlib.pyplot as plt
-from load_image import ft_load
+import matplotlib  # noqa: E402
+matplotlib.use("TkAgg")  # GUIバックエンドを指定  # noqa: E402
+import matplotlib.pyplot as plt  # noqa: E402
+from load_image import ft_load  # noqa: E402
 
 
 def ft_invert(array: np.ndarray) -> np.ndarray:
@@ -73,8 +73,9 @@ def ft_grey(array: np.ndarray) -> np.ndarray:
     Returns:
         np.ndarray: グレースケールに変換された画像データ。
     """
-    grey = (array[:, :, 0] + array[:, :, 1] + array[:, :, 2]) // 3  # RGBの平均値を取得
-    grey_img = np.stack((grey, grey, grey), axis=-1)  # RGB 形式のグレースケール画像を作成
+    grey = (array[:, :, 0] + array[:, :, 1] + array[:, :, 2]) // 3
+    # RGB形式のグレースケール画像を作成
+    grey_img = np.stack((grey, grey, grey), axis=-1)
     return grey_img
 
 
@@ -92,7 +93,9 @@ if __name__ == "__main__":
 
         # フィルタ名と適用後の画像をリスト化
         filters = ['Inverted', 'Red', 'Green', 'Blue', 'Grey']
-        images = [inverted_array, red_array, green_array, blue_array, grey_array]
+        images = [
+            inverted_array, red_array, green_array, blue_array, grey_array
+        ]
 
         # 画像を横に並べて表示
         plt.figure(figsize=(15, 5))
@@ -104,7 +107,6 @@ if __name__ == "__main__":
 
         plt.show()
 
-        
         print(ft_invert.__doc__)
 
     except ValueError as e:
