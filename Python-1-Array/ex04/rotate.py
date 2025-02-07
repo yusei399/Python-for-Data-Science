@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-# import matplotlib                      # noqa: E402
-# matplotlib.use("TkAgg")                # noqa: E402
+import matplotlib                      # noqa: E402
+matplotlib.use("TkAgg")                # noqa: E402
 import matplotlib.pyplot as plt        # noqa: E402
 import numpy as np                     # noqa: E402
 from load_image import ft_load        # noqa: E402

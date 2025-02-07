@@ -73,6 +73,6 @@ if __name__ == "__main__":
         bmi = give_bmi(height, weight)
         print(bmi, type(bmi))
         print(apply_limit(bmi, 26))
-        print(apply_limit.__doc__)
+        # print(apply_limit.__doc__)
     except ValueError as error:
         print(error)
