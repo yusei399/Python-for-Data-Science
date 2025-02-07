@@ -33,11 +33,3 @@ def ft_load(path: str) -> np.ndarray:
     img_array = np.array(img)
 
     return img_array
-
-
-if __name__ == "__main__":
-    try:
-        image_path = 'landscape.jpg'
-        print(ft_load(image_path))
-    except ValueError as e:
-        print(e)
