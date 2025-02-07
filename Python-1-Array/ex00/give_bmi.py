@@ -1,6 +1,5 @@
 from typing import List, Union
 
-
 def give_bmi(
     height: List[Union[int, float]],
     weight: List[Union[int, float]]
@@ -32,9 +31,14 @@ def apply_limit(
     return [b > limit for b in bmi]
 
 
-height = [2.71, 1.15]
-weight = [165.3, 38.4]
+if __name__ == "__main__":
+    try:
+        height = [2.71, 1.15]
+        weight = [165.3, 38.4]
 
-bmi = give_bmi(height, weight)
-print(bmi, type(bmi))
-print(apply_limit(bmi, 26))
+        bmi = give_bmi(height, weight)
+        print(bmi, type(bmi))
+        print(apply_limit(bmi, 26))
+    except ValueError as error:
+        print(error)
+
