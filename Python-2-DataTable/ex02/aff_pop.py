@@ -3,7 +3,6 @@ from load_csv import load
 
 
 def main():
-    # Load the dataset
     file_path = 'population_total.csv'
     df = load(file_path)
 
