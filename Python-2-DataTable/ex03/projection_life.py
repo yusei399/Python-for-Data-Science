@@ -1,49 +1,48 @@
-import matplotlib                      # noqa: E402
-matplotlib.use("TkAgg")                # noqa: E402
-import matplotlib.pyplot as plt        # noqa: E402
-from load_csv import load
-import pandas as pd
+import matplotlib  # noqa: E402
+matplotlib.use("TkAgg")  # noqa: E402
+import matplotlib.pyplot as plt  # noqa: E402
+from load_csv import load  # noqa: E402
 
 
 def main():
-    file_path_income = (
-        'income_per_person_gdppercapita_ppp_inflation_adjusted.csv'
-    )
-    file_path_life = 'life_expectancy_years.csv'
-    df_income = load(file_path_income)
-    df_life = load(file_path_life)
-
-    if df_income is not None and df_life is not None:
-        income_1900 = df_income[['country', '1900']]
-        life_1900 = df_life[['country', '1900']]
-
-        income_1900.columns = ['country', 'GDP per capita (1900)']
-        life_1900.columns = ['country', 'Life Expectancy (1900)']
-
-        merged_data = pd.merge(income_1900, life_1900, on='country')
-
-        merged_data['GDP per capita (1900)'] = (
-            merged_data['GDP per capita (1900)']
-            .replace({'k': 'e3'}, regex=True)
-            .astype(float)
+    """
+    life_expectancy_years.csv と
+    income_per_person_gdppercapita_ppp_inflation_adjusted.csv のデータを読み込み、
+    指定した年（ここでは 1900 年）の国ごとの寿命と一人当たり所得の関係を
+    散布図として表示。
+    """
+    try:
+        life_expectancy = load("life_expectancy_years.csv")
+        income_per_person = load(
+            "income_per_person_gdppercapita_ppp_inflation_adjusted.csv"
         )
 
-        plt.figure(figsize=(12, 6))
-        plt.scatter(
-            merged_data['GDP per capita (1900)'],
-            merged_data['Life Expectancy (1900)'],
-            label='Countries'
+        year = "1900"
+
+        assert year in life_expectancy, (
+            f"No data for year '{year}' in life expectancy"
+        )
+        assert year in income_per_person, (
+            f"No data for year '{year}' in income per person"
         )
 
-        plt.title('Life Expectancy vs GDP per Capita (1900)')
-        plt.xlabel('GDP per Capita (1900)')
-        plt.ylabel('Life Expectancy (1900)')
-        plt.legend()
-        plt.grid(True)
+        year_life_expectancy = life_expectancy[year]
+        year_income_per_person = income_per_person[year]
 
+        plt.scatter(year_income_per_person, year_life_expectancy)
+        plt.xscale("log")
+        plt.xticks(ticks=[300, 1000, 10000], labels=["300", "1k", "10k"])
+        plt.xlabel("Gross domestic product")
+        plt.ylabel("Life expectancy")
+        plt.title(year)
         plt.show()
-    else:
-        print("Failed to load one or both datasets.")
+
+    except AssertionError as e:
+        print("AssertionError:", e)
+    except Exception as e:
+        print("Exception:", e)
+    except KeyboardInterrupt:
+        pass
 
 
 if __name__ == "__main__":
