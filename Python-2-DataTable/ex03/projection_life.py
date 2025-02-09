@@ -1,4 +1,6 @@
-import matplotlib.pyplot as plt
+import matplotlib                      # noqa: E402
+matplotlib.use("TkAgg")                # noqa: E402
+import matplotlib.pyplot as plt        # noqa: E402
 from load_csv import load
 import pandas as pd
 
