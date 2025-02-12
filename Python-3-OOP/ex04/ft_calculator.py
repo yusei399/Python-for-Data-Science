@@ -3,8 +3,8 @@ class calculator:
     @staticmethod
     def dotproduct(V1: list[float], V2: list[float]) -> None:
         """
-        Calculates the dot product of two vectors and prints the result.
-        Example: dot product of [a, b, c] and [x, y, z] is a*x + b*y + c*z.
+        2つのベクトルのドット積（内積）を計算し、その結果を表示する。
+        例: [a, b, c] と [x, y, z] のドット積は a*x + b*y + c*z
         """
         result = sum(x * y for x, y in zip(V1, V2))
         print("Dot product is: {}".format(result))
@@ -12,7 +12,7 @@ class calculator:
     @staticmethod
     def add_vec(V1: list[float], V2: list[float]) -> None:
         """
-        Adds two vectors element-wise and prints the resulting vector.
+        2つのベクトルを要素ごとに加算し、結果のベクトルを表示する。
         """
         result = [float(x + y) for x, y in zip(V1, V2)]
         print("Add Vector is : {}".format(result))
@@ -20,7 +20,7 @@ class calculator:
     @staticmethod
     def sous_vec(V1: list[float], V2: list[float]) -> None:
         """
-        Subtracts the second vector from the first element-wise and prints the resulting vector.
+        第2のベクトルを第1のベクトルから要素ごとに減算し、結果のベクトルを表示する。
         """
         result = [float(x - y) for x, y in zip(V1, V2)]
         print("Sous Vector is: {}".format(result))
