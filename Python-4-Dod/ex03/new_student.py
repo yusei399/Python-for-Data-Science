@@ -38,9 +38,9 @@ class Student:
         学生オブジェクトを初期化します。
 
         Args:
-            name (str): 学生の名前。
-            surname (str): 学生の苗字。
-            active (bool, optional): アクティブ状態（デフォルトはTrue）。
+            name: 学生の名前。
+            surname: 学生の苗字。
+            active: アクティブ状態（デフォルトはTrue）。
 
         Raises:
             TypeError: 想定外のキーワード引数が渡された場合に発生する。
